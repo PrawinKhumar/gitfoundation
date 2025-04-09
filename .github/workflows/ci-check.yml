@@ -1,0 +1,19 @@
+name: Basic CI Check
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  html-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Verify HTML file exists
+        run: |
+          ls -l index.html
+          grep "<html>" index.html
+
